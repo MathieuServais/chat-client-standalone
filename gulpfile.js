@@ -8,7 +8,7 @@ var historyApiFallback = require('connect-history-api-fallback')
 var config = {
 	tsFiles: ['src/**/*.ts'],
 	htmlFiles: ['src/**/*.html'],
-	sassFiles: ['src/assets/css/*.scss'],
+	sassFiles: ['src/assets/*.scss'],
 	imgFiles: ['src/assets/img/**/*'],
 	jsFiles: ['src/assets/js/**/*.js']
 };
@@ -43,7 +43,7 @@ gulp.task('ts', function() {
 gulp.task('sass', function () {
   gulp.src(config.sassFiles)
     .pipe(sass().on('error', sass.logError))
-    .pipe(gulp.dest('dist/public/css'))
+    .pipe(gulp.dest('dist/assets'))
 		.pipe(browserSync.stream());
 });
 
