@@ -1,7 +1,9 @@
 import {Component} from "angular2/core";
+import {MessageAddComponent} from "./message-add.component";
 
 @Component({
     selector: "app",
-    template: "<h1>My First Angular 2 App</h1>"
+    template: `<message-add></message-add>`,
+    directives: [MessageAddComponent]
 })
 export class AppComponent { }
