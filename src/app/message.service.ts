@@ -11,6 +11,10 @@ export class MessageService {
     this.messageList = new Array<string>();
   }
 
+  public GetList() {
+    return this.messageList;
+  }
+
   public Add(message: string) {
     this.messageList.push(message);
     console.log(this.messageList);
