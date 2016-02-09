@@ -6,7 +6,7 @@ var browserSync = require('browser-sync').create();
 var historyApiFallback = require('connect-history-api-fallback')
 
 var config = {
-	tsFiles: ['src/**/*.ts'],
+	tsFiles: ['src/**/*.ts', 'typings/**/*.ts'],
 	htmlFiles: ['src/**/*.html'],
 	sassFiles: ['src/assets/*.scss'],
 	imgFiles: ['src/assets/img/**/*'],
