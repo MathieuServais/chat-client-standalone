@@ -41,7 +41,7 @@ Lunch wallaby.js on your editor
 
 - [x] Display message
 - [x] Send message
-- [ ] Keep focus on input message
+- [x] Keep focus on input message
 - [ ] Use enter for send message && alt+enter for line return
 - [ ] Save messages in LocalStorage
 - [ ] Default username

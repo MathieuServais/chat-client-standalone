@@ -7,8 +7,9 @@ import {Message} from "./message";
     template: `    
       <form (ngSubmit)="sendMessage()">
         <textarea [(ngModel)]="message" class="form-control" rows="2"
-                  placeholder="your message..."></textarea>
-        <button type="submit" class="btn btn-primary">Send</button>
+                  placeholder="your message..." #input></textarea>
+        <button type="submit" class="btn btn-primary"
+                (click)="input.focus()">Send</button>
       </form>
     `
 })
