@@ -1,5 +1,6 @@
 import {describe, it, expect, inject, beforeEachProviders} from "angular2/testing";
 import {MessageService} from "./message.service";
+import {Message} from "./message";
 
 describe("MessageService", () => {
   let service: MessageService;
@@ -12,9 +13,9 @@ describe("MessageService", () => {
     }));
   });
 
-  describe("Add", () => {
+  describe("Add a message", () => {
     it("should contient 1 message", inject([MessageService], (service) => {
-      service.Add("1msg");
+      service.Add(new Message("1msg"));
       expect(service.messageList.length).toBe(1);
     }));
   });

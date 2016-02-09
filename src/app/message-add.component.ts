@@ -1,5 +1,6 @@
 import {Component} from "angular2/core";
 import {MessageService} from "./message.service";
+import {Message} from "./message";
 
 @Component({
     selector: "message-add",
@@ -17,7 +18,7 @@ export class MessageAddComponent {
   constructor(private messageService: MessageService) {}
 
   public sendMessage() {
-    this.messageService.Add(this.message);
+    this.messageService.Add(new Message(this.message));
     this.cleanInput();
   }
 
