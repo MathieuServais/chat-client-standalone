@@ -6,10 +6,11 @@ import {Message} from "./message";
     selector: "message-add",
     template: `    
       <form (ngSubmit)="sendMessage()">
-        <textarea [(ngModel)]="message" class="form-control" rows="2"
-                  placeholder="your message..." #input></textarea>
+        <input [(ngModel)]="message" class="form-control"
+                  placeholder="your message..."
+                  #inputMessage />
         <button type="submit" class="btn btn-primary"
-                (click)="input.focus()">Send</button>
+                (click)="inputMessage.focus()">Send</button>
       </form>
     `
 })
