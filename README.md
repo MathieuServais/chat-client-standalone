@@ -11,6 +11,7 @@
 ### Application
 
 - Angular 2 (beta 3)
+  - RxJS 5 (beta 0)
 - Bootstrap 4 (alpha 2)
 
 ### Tests
@@ -42,7 +43,7 @@ Lunch wallaby.js on your editor
 - [x] Display message
 - [x] Send message
 - [x] Keep focus on input message
-- [ ] Save messages in LocalStorage
+- [x] Save messages in LocalStorage
 - [ ] Default username
 - [ ] Change username
 - [ ] Smart scroll
