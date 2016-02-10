@@ -1,5 +1,6 @@
 import {bootstrap}    from "angular2/platform/browser";
 import {AppComponent} from "./app.component";
 import {MessageService} from "./message.service";
+import {MessageStorage} from "./message-storage";
 
-bootstrap(AppComponent, [MessageService]);
+bootstrap(AppComponent, [MessageService, MessageStorage]);
