@@ -12,6 +12,9 @@ export class MessageService {
 
   public constructor(private store: MessageStorage) {
     this.subject = new Subject();
+    this.store.newMessageEvent.subscribe(message => {
+      this.subject.next(message);
+    });
   }
 
   public getList(): Observable<Message> {
