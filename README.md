@@ -44,8 +44,8 @@ Lunch wallaby.js on your editor
 - [x] Send message
 - [x] Keep focus on input message
 - [x] Save messages in LocalStorage
-- [ ] Default username
-- [ ] Change username
+- [x] Default username
+- [x] Change username
 - [x] Multi user
 - [ ] Smart scroll
 - [ ] Multi line message

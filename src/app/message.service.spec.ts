@@ -10,7 +10,7 @@ describe("MessageService", () => {
     it("should return a message", () => {
       let storage = new MessageStorage();
       let service = new MessageService(storage);
-      let message = new Message("msg");
+      let message = new Message("nick", "msg");
       spyOn(storage, "getList").and.returnValue([message]);
       let listMessage = new Array<Message>();
       service.getList().subscribe(message => {
@@ -24,7 +24,7 @@ describe("MessageService", () => {
       let storage = new MessageStorage();
       let service = new MessageService(storage);
       spyOn(storage, "set").and.stub();
-      let message = new Message("msg1");
+      let message = new Message("nick1", "msg1");
       service.add(message);
       expect(storage.set).toHaveBeenCalledWith(message);
     });

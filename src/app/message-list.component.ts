@@ -7,7 +7,7 @@ import {Message} from "./message";
     template: `    
       <ul class="list-group">
         <li class="list-group-item" *ngFor="#message of messageList">
-          {{message.body}}
+          <span class="text-info">[{{message.nickname}}]:</span> {{message.body}}
         </li>
       </ul>
     `

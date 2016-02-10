@@ -1,3 +1,5 @@
 export class Message {
-  constructor(public body: string) {}
+  constructor(
+    public nickname: string,
+    public body: string) {}
 }

@@ -9,6 +9,8 @@ import {
 
 import {MessageListComponent} from "./message-list.component";
 import {MessageService} from "./message.service";
+import {MessageStorage} from "./message-storage";
+import {Message} from "./message";
 
 describe("MessageListComponent", () => {
   let fixture: ComponentFixture;
@@ -16,7 +18,7 @@ describe("MessageListComponent", () => {
   setBaseTestProviders(TEST_BROWSER_PLATFORM_PROVIDERS,
                        TEST_BROWSER_APPLICATION_PROVIDERS);
 
-  beforeEachProviders(() => [MessageService]);
+  beforeEachProviders(() => [MessageService, MessageStorage]);
 
   beforeEach(injectAsync([TestComponentBuilder], tcb =>
     tcb.createAsync(MessageListComponent).then(f => fixture = f)
@@ -25,7 +27,10 @@ describe("MessageListComponent", () => {
   it("should have list of message", () => {
     // Given a component instance with some messages
     let messageListComponent = fixture.componentInstance;
-    messageListComponent.messageList = ["msg1", "msg2"];
+    messageListComponent.messageList = [
+      new Message("nick1", "msg1"),
+      new Message("nick2", "msg2")
+    ];
 
     // When we trigger the change detection
     fixture.detectChanges();

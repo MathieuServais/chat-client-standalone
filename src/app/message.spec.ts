@@ -5,7 +5,11 @@ describe("Message", () => {
   let message: Message;
 
   beforeEach(() => {
-    message = new Message("body of message");
+    message = new Message("nick", "body of message");
+  });
+
+  it("should have a nickname", () => {
+    expect(message.nickname).toBe("nick");
   });
 
   it("should have a body", () => {
