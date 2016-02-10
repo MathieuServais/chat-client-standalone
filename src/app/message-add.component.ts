@@ -20,7 +20,7 @@ export class MessageAddComponent {
   constructor(private messageService: MessageService) {}
 
   public sendMessage() {
-    this.messageService.Add(new Message(this.message));
+    this.messageService.add(new Message(this.message));
     this.cleanInput();
   }
 
