@@ -15,6 +15,9 @@ import {Message} from "./message";
 export class MessageListComponent {
   public messageList: Message[];
   constructor(private messageService: MessageService) {
-    this.messageList = messageService.GetList();
+    this.messageList = new Array<Message>();
+    messageService.getList().subscribe(message => {
+      this.messageList.push(message);
+    });
   }
 }

@@ -1,22 +1,33 @@
 import {Injectable} from "angular2/core";
-import {Observable} from "rxjs/observable";
+import {BrowserDomAdapter} from "angular2/platform/browser";
+import {Observable, Subject} from "rxjs/Rx";
+import {Observer} from "rxjs/Observer";
 import "rxjs/add/operator/map";
-import "rxjs/add/operator/toPromise";
 import {Message} from "./message";
+import {MessageStorage} from "./message-storage";
 
 @Injectable()
 export class MessageService {
-  private messageList: Message[];
+  private subject: Subject<Message>;
 
-  public constructor() {
-    this.messageList = new Array<Message>();
+  public constructor(private store: MessageStorage) {
+    this.subject = new Subject();
   }
 
-  public GetList() {
-    return this.messageList;
+  public getList(): Observable<Message> {
+    return this.subject.merge(this.getHistory());
   }
 
-  public Add(message: Message) {
-    this.messageList.push(message);
+  public add(message: Message) {
+    this.subject.next(message);
+    this.store.set(message);
+  }
+
+  public deleteAll() {
+    this.store.delete();
+  }
+
+  private getHistory() {
+    return Observable.from(this.store.getList());
   }
 }
