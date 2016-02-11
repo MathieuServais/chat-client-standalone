@@ -35,10 +35,17 @@ export class MessageAddComponent {
     if (command != null) {
       if (command.name === "Nick") {
         this.nickname = command.arg1;
+      } else if (command.name === "Clean") {
+        this.messageService.deleteAll();
+        this.cleanInput();
+        return;
       }
     }
     this.messageService.add(new Message(this.nickname, this.message));
     this.cleanInput();
+
+    let main = document.getElementById("main");
+    main.scrollTop = main.scrollHeight;
   }
 
   private cleanInput() {

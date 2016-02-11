@@ -19,5 +19,8 @@ export class MessageListComponent {
     messageService.getList().subscribe(message => {
       this.messageList.push(message);
     });
+    messageService.cleanMessageEvent.subscribe(m => {
+      this.messageList = new Array<Message>();
+    });
   }
 }

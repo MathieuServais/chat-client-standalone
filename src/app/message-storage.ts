@@ -17,7 +17,7 @@ export class MessageStorage {
     let windowEvent = dom.getGlobalEventTarget("window");
     windowEvent.addEventListener("storage", (event: StorageEvent) => {
       if (event.key !== MessageStorage.KEY_STORE) return;
-      let messageList: Message[] = JSON.parse(event.newValue);
+      let messageList: Message[] = JSON.parse(event.newValue || "[]");
       let lastMessage = messageList.pop();
       this.newMessageEvent.emit(lastMessage);
     }, false);

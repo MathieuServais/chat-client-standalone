@@ -10,6 +10,11 @@ export abstract class Command implements ICommand {
   public arg2: string;
 }
 
+class CleanCommand extends Command {
+  public static get pattern() { return "clean"; }
+  public get name() { return "Clean"; }
+}
+
 class NickCommand extends Command {
   public static get pattern() { return "nick"; }
   public get name() { return "Nick"; }
@@ -26,6 +31,7 @@ export class CommandFactory {
     let cmdGroup = this.commandRegex.exec(userInput);
     if (cmdGroup === null || cmdGroup.length === 0) return null;
     switch (cmdGroup[1]) {
+      case CleanCommand.pattern: return new CleanCommand();
       case NickCommand.pattern: return new NickCommand(cmdGroup[2]);
     }
     return null;
