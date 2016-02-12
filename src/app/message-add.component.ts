@@ -2,6 +2,7 @@ import {Component} from "angular2/core";
 import {MessageService} from "./message.service";
 import {Message} from "./message";
 import {CommandFactory, ICommand} from "./command";
+import {Authentification} from "./authentification";
 
 @Component({
     selector: "message-add",
@@ -26,15 +27,19 @@ export class MessageAddComponent {
   public message: string;
 
   constructor(private messageService: MessageService,
+              private authentification: Authentification,
               private commandFactory: CommandFactory) {
-    this.nickname = "anonymous";
+    this.nickname = authentification.nickname;
   }
 
   public sendMessage() {
     let command = this.commandFactory.createFromUserInput(this.message);
     if (command != null) {
       if (command.name === "Nick") {
-        this.nickname = command.arg1;
+        command.execute();
+        // Force update name
+        // Todo use event ?
+        this.nickname = this.authentification.nickname;
       } else if (command.name === "Clean") {
         this.messageService.deleteAll();
         this.cleanInput();
@@ -43,9 +48,6 @@ export class MessageAddComponent {
     }
     this.messageService.add(new Message(this.nickname, this.message));
     this.cleanInput();
-
-    let main = document.getElementById("main");
-    main.scrollTop = main.scrollHeight;
   }
 
   private cleanInput() {
