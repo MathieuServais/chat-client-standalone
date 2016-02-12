@@ -35,16 +35,9 @@ export class MessageAddComponent {
   public sendMessage() {
     let command = this.commandFactory.createFromUserInput(this.message);
     if (command != null) {
-      if (command.name === "Nick") {
-        command.execute();
-        // Force update name
-        // Todo use event ?
-        this.nickname = this.authentification.nickname;
-      } else if (command.name === "Clean") {
-        this.messageService.deleteAll();
-        this.cleanInput();
-        return;
-      }
+      command.execute();
+      // Force update name - Todo use event ?
+      this.nickname = this.authentification.nickname;
     }
     this.messageService.add(new Message(this.nickname, this.message));
     this.cleanInput();
