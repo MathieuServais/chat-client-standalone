@@ -40,13 +40,12 @@ Lunch wallaby.js on your editor
 
 ## Checklist
 
-- [x] Display message
+- [x] Display messages
 - [x] Send message
 - [x] Keep focus on input message
 - [x] Save messages in LocalStorage
-- [x] Default username
-- [x] Change username
-- [x] Multi user
-- [ ] Smart scroll
-- [ ] Multi line message
-- [ ] Avatar
+- [x] Nickname Command
+- [x] Clean Command
+- [x] Multi user (one per tab)
+- [ ] Smart scroll on new message
+- [ ] Test e2e with angular 2
