@@ -62,6 +62,7 @@ gulp.task('watch', ['ts', 'sass', 'html'], function() {
 gulp.task('serve', ['defaultClean'], function() {
   browserSync.init({
 		open: false,
+    ghostMode: false,
     server: {
       baseDir: ["./dist", "./"],
       middleware: [historyApiFallback()]
