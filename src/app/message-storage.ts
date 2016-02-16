@@ -2,6 +2,9 @@ import {EventEmitter} from "angular2/core";
 import {BrowserDomAdapter} from "angular2/platform/browser";
 import {Message} from "./message";
 
+/**
+ * Localstoage for message with event on new message posted
+ */
 export class MessageStorage {
   private static KEY_STORE: string = "messages";
 
@@ -18,8 +21,10 @@ export class MessageStorage {
     windowEvent.addEventListener("storage", (event: StorageEvent) => {
       if (event.key !== MessageStorage.KEY_STORE) return;
       let messageList: Message[] = JSON.parse(event.newValue || "[]");
-      let lastMessage = messageList.pop();
-      this.newMessageEvent.emit(lastMessage);
+      if (messageList.length > 0) {
+        let lastMessage = messageList.pop();
+        this.newMessageEvent.emit(lastMessage);
+      }
     }, false);
   }
 
