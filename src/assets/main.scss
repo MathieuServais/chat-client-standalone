@@ -5,3 +5,8 @@ $border-radius-lg:       0px;
 $border-radius-sm:       0px;
 
 @import "../../node_modules/bootstrap/scss/bootstrap";
+
+#wrapper-static-bar {
+  margin-top: 54px;
+  margin-bottom: 37px;
+}

@@ -4,6 +4,7 @@ import {Message} from "./message";
 
 @Component({
     selector: "message-list",
+    styles: [".list-group-item { line-height:10px }"],
     template: `    
       <ul class="list-group">
         <li class="list-group-item" *ngFor="#message of messageList">
