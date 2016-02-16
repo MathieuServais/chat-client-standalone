@@ -25,9 +25,13 @@ describe("CommandFactory", () => {
       let authentification = new Authentification();
       let commandFactory = new CommandFactory(authentification, null);
       let command = commandFactory.createFromUserInput("/nick mercadis");
+      let actualNickname: string;
+      authentification.getNickname().subscribe(nickname => {
+       actualNickname = nickname;
+      });
       command.execute();
       expect(command.name).toBe("Nick");
-      expect(authentification.nickname).toBe("mercadis");
+      expect(actualNickname).toBe("mercadis");
     });
     it("should delete all messages with CleanCommand", () => {
       let messageService = new MessageService(new MessageStorage());

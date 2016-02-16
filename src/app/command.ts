@@ -14,10 +14,13 @@ export abstract class Command implements ICommand {
   public arg1: string;
   public arg2: string;
   public execute() {
-    throw Error("Not Implemented");
+    throw Error("Abstract method");
   }
 }
 
+/**
+ * Command for cleanning the chat
+ */
 class CleanCommand extends Command {
   public static get pattern() { return "clean"; }
   public get name() { return "Clean"; }
@@ -29,6 +32,9 @@ class CleanCommand extends Command {
   }
 }
 
+/**
+ * Command for changing the nickname
+ */
 class NickCommand extends Command {
   public static get pattern() { return "nick"; }
   public get name() { return "Nick"; }
@@ -36,10 +42,13 @@ class NickCommand extends Command {
     super();
   }
   public execute() {
-    this.authentification.nickname = this.arg1;
+    this.authentification.setNickname(this.arg1);
   }
 }
 
+/**
+ * Build a command from the user input in chat
+ */
 @Injectable()
 export class CommandFactory {
   private commandRegex = new RegExp("^/(\\S+)[ ]*(\\S*)[ ]*(\\S*)");
