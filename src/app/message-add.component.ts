@@ -29,18 +29,20 @@ export class MessageAddComponent {
   constructor(private messageService: MessageService,
               private authentification: Authentification,
               private commandFactory: CommandFactory) {
-    this.nickname = authentification.nickname;
+    this.message = "";
+    authentification.getNickname().subscribe(nickname => this.nickname = nickname);
   }
 
   public sendMessage() {
-    let command = this.commandFactory.createFromUserInput(this.message);
-    if (command != null) {
-      command.execute();
-      // Force update name - Todo use event ?
-      this.nickname = this.authentification.nickname;
-    }
+    this.tryCommand();
     this.messageService.add(new Message(this.nickname, this.message));
     this.cleanInput();
+  }
+
+  private tryCommand() {
+    let command = this.commandFactory.createFromUserInput(this.message);
+    if (command != null)
+      command.execute();
   }
 
   private cleanInput() {
