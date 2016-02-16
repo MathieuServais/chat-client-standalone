@@ -11,7 +11,7 @@ import {Authentification} from "./authentification";
         <div class="input-group">
           <span class="input-group-addon" id="basic-addon1">@{{nickname}}</span>
           <input [(ngModel)]="message" class="form-control"
-                  placeholder="your message..."
+                  placeholder="your message... (try /nick newNickname or /clean)"
                   #inputMessage />
           <span class="input-group-btn">
             <button type="submit" class="btn btn-primary"
