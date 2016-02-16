@@ -1,11 +1,7 @@
 {
   "name": "chat-client-standalone",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "Chat client without server",
-  "main": "index.html",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
   "author": "mercadis",
   "license": "ISC",
   "dependencies": {
