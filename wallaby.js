@@ -12,11 +12,6 @@ module.exports = function (wallaby) {
       { pattern: "src/**/*.ts", load: false },
       { pattern: "src/**/*.spec.ts", ignore: true }
     ],
-    workers: {
-      initial: 1, 
-      regular: 1,
-      recycle: true
-    },
     tests: [
       { pattern: "src/**/*.spec.ts", load: false }
     ],

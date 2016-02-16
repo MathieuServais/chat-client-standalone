@@ -1,7 +1,7 @@
 {
-  "name": "tchat-client-standalone",
+  "name": "chat-client-standalone",
   "version": "0.0.1",
-  "description": "Tchat client without server",
+  "description": "Chat client without server",
   "main": "index.html",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"

@@ -11,18 +11,7 @@ import {MessageAddComponent} from "./message-add.component";
 import {MessageService} from "./message.service";
 
 describe("MessageAddComponent", () => {
-  let fixture: ComponentFixture;
-
-  setBaseTestProviders(TEST_BROWSER_PLATFORM_PROVIDERS,
-                       TEST_BROWSER_APPLICATION_PROVIDERS);
-
-  beforeEachProviders(() => [MessageService]);
-
-  beforeEach(injectAsync([TestComponentBuilder], tcb =>
-    tcb.createAsync(MessageAddComponent).then(f => fixture = f)
-  ));
-
   it("should send a message", () => {
-    // Todo need doc exemple
+    // Todo need to find doc exemple
   });
 });

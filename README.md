@@ -1,4 +1,42 @@
-# Tchat Client Standalone
+https://david-dm.org/mercadis/tchat-client-standalone
+
+https://david-dm.org/mercadis/tchat-client-standalone#info=devDependencies
+
+# What is Chat Client Standalone
+
+Chat client standalone is hello world chat prototype realized with [Angular 2](https://angular.io/) where you can send message over tab in web browser.
+
+# Demo
+
+http://chat-client-standalone.deltaweb.fr
+
+# Quick Start
+
+## Prerequisites
+
+Firstly you need to install [Nodejs](https://nodejs.org).
+After, you need 2 tools :
+> `npm install -g gulp tsd`
+
+If you want testing in your favorite text editor, you need [wallaby.js](http://wallabyjs.com/) (you can use trial demo)
+
+## Installation
+
+>`npm install`
+
+>`tsd install`
+
+## Execution
+
+### Start server
+
+>`gulp serve`
+
+Lunch browser `http:\\localhost:3000`
+
+### Test
+
+Lunch wallaby.js on your editor
 
 ## Technologies
 
@@ -20,24 +58,6 @@
 - Karma
 - Wallaby.js
 
-## Installation
-
->`npm install`
-
->`tsd install`
-
-## Execution
-
-### Start server
-
->`gulp serve`
-
-Lunch browser `http:\\localhost:3000`
-
-### Test
-
-Lunch wallaby.js on your editor
-
 ## Checklist
 
 - [x] Display messages
@@ -47,5 +67,6 @@ Lunch wallaby.js on your editor
 - [x] Nickname Command
 - [x] Clean Command
 - [x] Multi user (one per tab)
+- [ ] Avartar
 - [ ] Smart scroll on new message
 - [ ] Test e2e with angular 2
