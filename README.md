@@ -68,5 +68,5 @@ Lunch wallaby.js on your editor
 - [x] Clean Command
 - [x] Multi user (one per tab)
 - [ ] Avartar
-- [ ] Smart scroll on new message
+- [x] Smart scroll on new message
 - [ ] Test e2e with angular 2
