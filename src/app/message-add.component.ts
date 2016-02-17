@@ -6,10 +6,13 @@ import {Authentification} from "./authentification";
 
 @Component({
     selector: "message-add",
+    styles: [`
+    .input-group, .input-group input, .input-group button { line-height:40px }
+    `],
     template: `    
       <form (ngSubmit)="sendMessage()">
         <div class="input-group">
-          <span class="input-group-addon" id="basic-addon1">@{{nickname}}</span>
+          <span class="input-group-addon bg-primary">@{{nickname}}</span>
           <input [(ngModel)]="message" class="form-control"
                   placeholder="your message... (try /nick newNickname or /clean)"
                   #inputMessage />
