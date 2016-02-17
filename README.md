@@ -1,6 +1,6 @@
-https://david-dm.org/mercadis/tchat-client-standalone
+https://david-dm.org/mercadis/chat-client-standalone
 
-https://david-dm.org/mercadis/tchat-client-standalone#info=devDependencies
+https://david-dm.org/mercadis/chat-client-standalone#info=devDependencies
 
 # What is Chat Client Standalone
 
