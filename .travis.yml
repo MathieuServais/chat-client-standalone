@@ -1,12 +1,10 @@
 language: node_js
 node_js:
-  - "5.3"
-sudo: required
-before_script:
-  - npm install -g gulp
+  - 5.3
+sudo: false
+before_install:
   - npm install -g tsd
   - tsd install
-before_install:
-  - wget http://security.ubuntu.com/ubuntu/pool/main/i/icu/libicu52_52.1-3ubuntu0.4_amd64.deb
-  - sudo dpkg -i libicu52_52*.deb
+before_script:
+  - npm install -g gulp
 script: gulp build
