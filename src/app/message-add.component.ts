@@ -37,15 +37,9 @@ export class MessageAddComponent {
   }
 
   public sendMessage() {
-    this.tryCommand();
-    this.messageService.add(new Message(this.nickname, this.message));
+    let command = this.commandFactory.createFromUserInput(new Message(this.nickname, this.message));
+    command.execute();
     this.cleanInput();
-  }
-
-  private tryCommand() {
-    let command = this.commandFactory.createFromUserInput(this.message);
-    if (command != null)
-      command.execute();
   }
 
   private cleanInput() {

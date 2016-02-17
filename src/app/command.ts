@@ -1,32 +1,33 @@
 import {Injector, Injectable} from "angular2/core";
 import {Authentification} from "./authentification";
 import {MessageService} from "./message.service";
+import {Message} from "./message";
 
+/**
+ * Every command need to implement this interface
+ */
 export interface ICommand {
-  name: string;
-  arg1: string;
-  arg2: string;
   execute(): void;
 }
 
-export abstract class Command implements ICommand {
-  public name: string;
-  public arg1: string;
-  public arg2: string;
+/**
+ * Command for send message
+ */
+class SendMessageCommand implements ICommand {
+  public static get pattern() { return "default"; }
+  public constructor(private messageService: MessageService,
+                     private message: Message) {}
   public execute() {
-    throw Error("Abstract method");
+    this.messageService.add(this.message);
   }
 }
 
 /**
  * Command for cleanning the chat
  */
-class CleanCommand extends Command {
+class CleanCommand implements ICommand {
   public static get pattern() { return "clean"; }
-  public get name() { return "Clean"; }
-  public constructor(private messageService: MessageService) {
-    super();
-  }
+  public constructor(private messageService: MessageService) {}
   public execute() {
     this.messageService.deleteAll();
   }
@@ -35,14 +36,12 @@ class CleanCommand extends Command {
 /**
  * Command for changing the nickname
  */
-class NickCommand extends Command {
+class NickCommand implements ICommand {
   public static get pattern() { return "nick"; }
-  public get name() { return "Nick"; }
-  public constructor(private authentification: Authentification) {
-    super();
-  }
+  public constructor(private authentification: Authentification,
+                     private nickname: string) {}
   public execute() {
-    this.authentification.setNickname(this.arg1);
+    this.authentification.setNickname(this.nickname);
   }
 }
 
@@ -51,27 +50,34 @@ class NickCommand extends Command {
  */
 @Injectable()
 export class CommandFactory {
-  private commandRegex = new RegExp("^/(\\S+)[ ]*(\\S*)[ ]*(\\S*)");
+  private commandRegex = new RegExp("^/(\\S+)[ ]*(\\S*)");
 
   public constructor(private authentification: Authentification,
                      private messageService: MessageService) {}
 
-  public createFromUserInput(userInput: string): ICommand {
-    if (!userInput.startsWith("/")) return null;
-    let cmdGroup = this.commandRegex.exec(userInput);
-    if (cmdGroup === null || cmdGroup.length === 0) return null;
+  public createFromUserInput(message: Message): ICommand {
+    let cmdGroup = this.commandRegex.exec(message.body);
+    let command: ICommand = null;
+    if (cmdGroup !== null && cmdGroup.length >= 2)
+      command = this.create(message, cmdGroup[1], cmdGroup[2]);
+    // Default command = send message on chat
+    console.log(command);
 
-    return this.create(cmdGroup[1], cmdGroup[2], cmdGroup[3]);
+    if (command === null)
+      command = this.create(message, SendMessageCommand.pattern);
+
+    return command;
   }
 
-  private create(name: string, arg1: string, arg2: string): ICommand {
+  private create(message: Message, name: string, arg?: string): ICommand {
     switch (name) {
+      case SendMessageCommand.pattern:
+        return new SendMessageCommand(this.messageService, message);
       case CleanCommand.pattern:
         return new CleanCommand(this.messageService);
       case NickCommand.pattern:
-        let cmd = new NickCommand(this.authentification);
-        cmd.arg1 = arg1;
-        return cmd;
+        return new NickCommand(this.authentification, arg);
+     // ADD new command here
     }
     return null;
   }
