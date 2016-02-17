@@ -4,11 +4,21 @@ import {Message} from "./message";
 
 @Component({
     selector: "message-list",
-    styles: [".list-group-item { line-height:10px }"],
+    styles: [`
+    .list-group { margin:15px }
+    .list-group-item { line-height:18px }
+    `],
     template: `    
       <ul class="list-group">
         <li class="list-group-item" *ngFor="#message of messageList">
-          <span class="text-info">[{{message.nickname}}]:</span> {{message.body}}
+          <div class="media">
+            <div class="media-left">
+              <span class="text-primary"><{{message.nickname}}></span>
+            </div>
+            <div class="media-body">
+              {{message.body}}
+            </div>
+          </div>
         </li>
       </ul>
     `
