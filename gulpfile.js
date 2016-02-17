@@ -69,3 +69,5 @@ gulp.task('serve', ['defaultClean'], function() {
     }
   });
 });
+
+gulp.task('build', ['ts', 'sass', 'html']);

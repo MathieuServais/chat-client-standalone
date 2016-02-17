@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/mercadis/chat-client-standalone.svg?branch=master)](https://travis-ci.org/mercadis/chat-client-standalone)
+
 [![Dependency Status](https://david-dm.org/mercadis/chat-client-standalone.svg?style=flat-square)](https://david-dm.org/mercadis/chat-client-standalone)
 [![devDependency Status](https://david-dm.org/mercadis/chat-client-standalone/dev-status.svg?style=flat-square)](https://david-dm.org/mercadis/chat-client-standalone#info=devDependencies)
 
@@ -47,9 +49,9 @@ Lunch wallaby.js on your editor
 
 ### Application
 
-- Angular 2 (beta 3)
-  - RxJS 5 (beta 0)
-- Bootstrap 4 (alpha 2)
+- Angular 2
+  - RxJS 5
+- Bootstrap 4
 
 ### Tests
 
