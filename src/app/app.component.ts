@@ -9,7 +9,7 @@ import {MessageListComponent} from "./message-list.component";
         <a class="navbar-brand" href="#">Chat Client Standalone</a>
         <ul class="nav navbar-nav">
           <li class="nav-item">
-            <a class="nav-link" href="http://localhost:3000" target="_blank">Add user</a>
+            <a class="nav-link" [href]="url" target="_blank">Add user</a>
           </li>
         </ul>
       </nav>
@@ -20,4 +20,9 @@ import {MessageListComponent} from "./message-list.component";
     `,
     directives: [MessageAddComponent, MessageListComponent]
 })
-export class AppComponent { }
+export class AppComponent {
+  public url: string;
+  public constructor() {
+    this.url = window.location.href;
+  }
+}
