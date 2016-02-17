@@ -1,5 +1,4 @@
 [![Dependency Status](https://david-dm.org/mercadis/chat-client-standalone.svg?style=flat-square)](https://david-dm.org/mercadis/chat-client-standalone)
-
 [![devDependency Status](https://david-dm.org/mercadis/chat-client-standalone/dev-status.svg?style=flat-square)](https://david-dm.org/mercadis/chat-client-standalone#info=devDependencies)
 
 # What is Chat Client Standalone
