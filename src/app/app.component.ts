@@ -15,9 +15,4 @@ import {MessageAddComponent} from "./message-add.component";
     `,
     directives: [MessageAddComponent, MessageListComponent, HeaderComponent]
 })
-export class AppComponent {
-  public url: string;
-  public constructor() {
-    this.url = window.location.href;
-  }
-}
+export class AppComponent {}

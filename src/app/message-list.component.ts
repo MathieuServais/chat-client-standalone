@@ -1,4 +1,4 @@
-import {Component, AfterViewInit } from "angular2/core";
+import {Component, AfterViewInit, AfterViewChecked } from "angular2/core";
 import {MessageService} from "./message.service";
 import {Message} from "./message";
 
@@ -23,22 +23,28 @@ import {Message} from "./message";
       </ul>
     `
 })
-export class MessageListComponent implements AfterViewInit {
-  public messageList: Message[];
+export class MessageListComponent implements AfterViewChecked {
+  public messageList: Message[] = new Array<Message>();
+
   constructor(private messageService: MessageService) {
+    // Subscribe event add message and clean message
+    messageService.getList().subscribe(message => this.addNewMessage(message));
+    messageService.cleanMessageEvent.subscribe(m => this.cleanMessages());
+  }
+
+  ngAfterViewChecked() {
+    this.updateScrollToBottom();
+  }
+
+  cleanMessages() {
     this.messageList = new Array<Message>();
-    messageService.getList().subscribe(message => {
-      this.messageList.push(message);
-      this.updateScrollPosition();
-    });
-    messageService.cleanMessageEvent.subscribe(m => {
-      this.messageList = new Array<Message>();
-    });
   }
-  ngAfterViewInit() {
-    this.updateScrollPosition();
+
+  addNewMessage(message: Message) {
+    this.messageList.push(message);
   }
-  private updateScrollPosition() {
-    setTimeout(() => window.scrollTo(0, document.body.scrollHeight), 100);
+
+  updateScrollToBottom() {
+    window.scrollTo(window.scrollX, document.body.scrollHeight);
   }
 }

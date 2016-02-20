@@ -27,12 +27,11 @@ import {Authentification} from "./authentification";
 })
 export class MessageAddComponent {
   public nickname: string;
-  public message: string;
+  public message: string = "";
 
   constructor(private messageService: MessageService,
               private authentification: Authentification,
               private commandFactory: CommandFactory) {
-    this.message = "";
     authentification.getNickname().subscribe(nickname => this.nickname = nickname);
   }
 
