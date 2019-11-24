@@ -1,15 +1,6 @@
-[![Build Status](https://travis-ci.org/mercadis/chat-client-standalone.svg?branch=master)](https://travis-ci.org/mercadis/chat-client-standalone)
-
-[![Dependency Status](https://david-dm.org/mercadis/chat-client-standalone.svg?style=flat-square)](https://david-dm.org/mercadis/chat-client-standalone)
-[![devDependency Status](https://david-dm.org/mercadis/chat-client-standalone/dev-status.svg?style=flat-square)](https://david-dm.org/mercadis/chat-client-standalone#info=devDependencies)
-
 # What is Chat Client Standalone
 
 Chat client standalone is hello world chat prototype realized with [Angular 2](https://angular.io/) where you can send message over tab in web browser.
-
-# Demo
-
-http://chat-client-standalone.deltaweb.fr
 
 # Quick Start
 
